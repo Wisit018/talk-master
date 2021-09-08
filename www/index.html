@@ -90,9 +90,7 @@
 				</div>
 
 				<div class="label">Name 📛</div>
-				<input type="text" placeholder="Your name" v-model="name" v-on:keyup="nameToLocalStorage" />
-
-				<div class="copy link" v-on:click="copyURL">{{copyText || "Copy room link"}}</div>
+				<input type="text" placeholder="Your name" v-model="name" v-on:keyup="nameToLocalStorage" />				
 				<div class="copy link" v-on:click="toggleSelfVideoMirror">
 					Mirror / Unmirror
 					<small class="light">(self-view)</small>
