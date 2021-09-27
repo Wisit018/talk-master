@@ -37,7 +37,7 @@ input {
 }
 .video.two {
 	width: 50vw;
-	height: 50vh;
+	height: 100vh;
 }
 .video.three {
 	width: 33.33vw;
@@ -53,8 +53,8 @@ input {
 	height: 50vh;
 }
 .video video {
-	width: 100%;
-	height: 100%;
+	width: 50%;
+	height: 50%;
 	display: block;
 	margin: auto;
 	box-sizing: border-box;
