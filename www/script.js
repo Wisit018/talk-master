@@ -45,7 +45,7 @@ let dataChannels = {};
 
 function init() {
 	// skip analytics if its some other domain. Ideally you should delete this line. [ ข้ามการวิเคราะห์หากเป็นโดเมนอื่น เป็นการดีที่คุณควรลบบรรทัดนี้ ]
-	//  if (window.location.hostname !== "usetalk.io" && cabin) cabin.blockMe(true);
+	 if (window.location.hostname !== "usetalk.io" && cabin) cabin.blockMe(true);
 
 	App.roomLink = `${APP_URL}/${ROOM_ID}`;
 
