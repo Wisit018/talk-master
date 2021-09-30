@@ -37,15 +37,15 @@ const ROOM_ID = (() => {
 const USE_AUDIO = true;
 const USE_VIDEO = true;
 
-let signalingSocket = null; /* our socket.io connection to our webserver */
-let localMediaStream = null; /* our own microphone / webcam */
-let peers = {}; /* keep track of our peer connections, indexed by peer_id (aka socket.io id) */
-let peerMediaElements = {}; /* keep track of our <video>/<audio> tags, indexed by peer_id */
+let signalingSocket = null; /* our socket.io connection to our webserver [ การเชื่อมต่อ socket.io ของเรากับเว็บเซิร์ฟเวอร์ของเรา ] */
+let localMediaStream = null; /* our own microphone / webcam [ไมโครโฟน / เว็บแคมของเรา]*/
+let peers = {}; /* keep track of our peer connections, indexed by peer_id (aka socket.io id) [ติดตามการเชื่อมต่อ peer ของเรา จัดทำดัชนีโดย peer_id (aka socket.io id)]*/
+let peerMediaElements = {}; /* keep track of our <video>/<audio> tags, indexed by peer_id [ติดตามแท็ก <video>/<audio> ของเรา จัดทำดัชนีโดย peer_id] */
 let dataChannels = {};
 
 function init() {
-	// skip analytics if its some other domain. Ideally you should delete this line.
-	 if (window.location.hostname !== "usetalk.io" && cabin) cabin.blockMe(true);
+	// skip analytics if its some other domain. Ideally you should delete this line. [ ข้ามการวิเคราะห์หากเป็นโดเมนอื่น เป็นการดีที่คุณควรลบบรรทัดนี้ ]
+	//  if (window.location.hostname !== "usetalk.io" && cabin) cabin.blockMe(true);
 
 	App.roomLink = `${APP_URL}/${ROOM_ID}`;
 
@@ -213,7 +213,7 @@ function setupLocalMedia(callback, errorback) {
 			});
 		})
 		.catch(() => {
-			/* user denied access to a/v */
+			/* user denied access to a/v [ ผู้ใช้ปฏิเสธการเข้าถึง a/v ] */
 			alert("This site will not work without camera/microphone access.");
 			if (errorback) errorback();
 		});

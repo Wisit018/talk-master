@@ -5,18 +5,18 @@ const app = express();
 const server = http.createServer(app);
 const io = require("socket.io")(server);
 
-// Server all the static files from www folder
+// Server all the static files from www folder [ เซิร์ฟเวอร์ไฟล์สแตติกทั้งหมดจากโฟลเดอร์ www ]
 app.use(express.static(path.join(__dirname, "www")));
 app.use(express.static(path.join(__dirname, "icons")));
 app.use(express.static(path.join(__dirname, "node_modules/vue/dist/")));
 
-// Get PORT from env variable else assign 3000 for development
+// Get PORT from env variable else assign 3000 for development [ รับ PORT จากตัวแปร env อย่างอื่นกำหนด 3000 สำหรับการพัฒนา ]
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, null, () => console.log("Listening on port " + PORT));
 
 app.get("/legal", (req, res) => res.sendFile(path.join(__dirname, "www/legal.html")));
 
-// All URL patterns should served with the same file.
+// All URL patterns should served with the same file. [ รูปแบบ URL ทั้งหมดควรแสดงเป็นไฟล์เดียวกัน ]
 app.get(["/", "/:room"], (req, res) => res.sendFile(path.join(__dirname, "www/index.html")));
 
 const channels = {};
@@ -41,7 +41,7 @@ io.sockets.on("connection", (socket) => {
 		console.log("[" + socket.id + "] join ", config);
 		const channel = socketHostName + config.channel;
 
-		// Already Joined
+		// Already Joined [ เข้าร่วมแล้ว ] 
 		if (channel in socket.channels) return;
 
 		if (!(channel in channels)) {
@@ -58,7 +58,7 @@ io.sockets.on("connection", (socket) => {
 	});
 
 	const part = (channel) => {
-		// Socket not in channel
+		// Socket not in channel [ Socket ไม่อยู่ในห้อง ]
 		if (!(channel in socket.channels)) return;
 
 		delete socket.channels[channel];
